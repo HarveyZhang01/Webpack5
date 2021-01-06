@@ -4,6 +4,7 @@ const config = require("../config");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const packageConfig = require("../package.json");
+const { merge } = require("webpack-merge");
 
 /**
  * 资源文件的存放路径
@@ -100,13 +101,8 @@ exports.styleLoaders = function (options) {
  */
 // glob 是webpack安装时依赖的一个第三方模块，该模块允许你使用*等符号，例如lib/*.js就是获取lib文件夹下的所有js后缀名的文件
 var glob = require("glob");
-// 页面模板
-var HtmlWebpackPlugin = require("html-webpack-plugin");
 // 取得相应的页面路径，因为之前的目录结构，所以是src文件下的framework文件夹
 var PAGE_PATH = path.resolve(__dirname, "../src/framework");
-// 用于做相应的merge处理
-var merge = require("webpack-merge"); // webpack-merge是一个可以合并数组和对象的插件
-
 // 多入口配置
 // 通过glob模块读取framework文件夹下的js后缀文件，如果该文件存在
 // 那么就作为入口处理
@@ -124,9 +120,9 @@ exports.entries = function () {
 };
 
 // 多页面输出配置
-// 与上面的多页面入口配置相同，读取framework文件夹下对应的html后缀文件，然后放入数组中
+// 与上面的多页面入口配置相同，读取framework文件夹下对应的ejs后缀模板文件，然后放入数组中
 exports.htmlPlugin = function () {
-  var entryHtml = glob.sync(PAGE_PATH + "/*/*.html");
+  var entryHtml = glob.sync(PAGE_PATH + "/*/*.ejs");
   var arr = [];
   entryHtml.forEach((filePath) => {
     var filename = filePath.substring(
