@@ -1,0 +1,23 @@
+{
+  "name": "webpack5",
+  "version": "0.0.1",
+  "description": "webpack5配置",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HarveyZhang01/Webpack5.git"
+  },
+  "author": "HarveyZhang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HarveyZhang01/Webpack5/issues"
+  },
+  "homepage": "https://github.com/HarveyZhang01/Webpack5#readme",
+  "devDependencies": {
+    "webpack": "^5.11.1",
+    "webpack-cli": "^4.3.1"
+  }
+}
