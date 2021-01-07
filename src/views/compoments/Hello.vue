@@ -9,6 +9,11 @@
     <button @click="changeAppName">修改AppName</button>
     <button @click="changeUserName">修改UserName</button>
     <button @click="register">注册动态模块</button>
+    <input
+      type="text"
+      v-model="stateValue"
+    >
+    <p>{{stateValue}}</p>
     <p
       v-for="(li, index) in todoList"
       :key="index"
@@ -43,6 +48,14 @@ export default {
       appVersion: state => state.appVersion,
       todoList: state => state.todo ? state.todo.todoList : []
     }),
+    stateValue: {
+      get() {
+        return this.$store.state.stateValue
+      },
+      set(value) {
+        this.SET_STATE_VALUE(value)
+      }
+    }
 
     // import { mapState } from 'vuex' 命名空间方式使用
     // ...mapState('im', {
@@ -73,7 +86,8 @@ export default {
   methods: {
     ...mapMutations([
       'SET_APP_NAME',
-      'SET_USER_NAME'
+      'SET_USER_NAME',
+      'SET_STATE_VALUE'
     ]),
     ...mapActions([
       'updateAppName'
@@ -104,6 +118,9 @@ export default {
           ]
         }
       })
+    },
+    stateValueChange(val) {
+      this.SET_STATE_VALUE(val)
     }
   }
 }
