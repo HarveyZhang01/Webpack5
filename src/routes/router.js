@@ -7,12 +7,12 @@ const routes = [
     path: "/",
     redirect: "/index",
     name: "index",
-    component: () => import("../views/Index.vue")
+    component: () => import("@/App.vue")
   },
   {
     path: "/index",
     name: "index",
-    component: () => import("../views/Index.vue")
+    component: () => import("../views/compoments/Hello.vue")
   }
 ];
 
