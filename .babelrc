@@ -1,15 +1,10 @@
 {
-  "presets": [
-    [
-      "env",
-      {
-        "modules": false,
-        "targets": {
-          "browsers": ["> 1%", "last 2 versions", "not ie <= 8"]
-        }
-      }
-    ],
-    "stage-2"
-  ],
-  "plugins": ["transform-vue-jsx", "transform-runtime"]
+  "presets": ["@babel/env"],
+  // common.js 和 es6 混用
+  "sourceType": "unambiguous",
+  "plugins": [
+    "@babel/plugin-proposal-class-properties",
+    "@babel/plugin-transform-runtime",
+    "@babel/plugin-syntax-dynamic-import"
+  ]
 }

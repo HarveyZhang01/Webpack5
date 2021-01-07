@@ -1,23 +1,13 @@
 import Vue from "vue";
-import VueRouter from "vue-router";
-import store from "./store/index.js";
-import routers from "./router/index.js";
-import index from "./views/index.vue";
-
-Vue.use(VueRouter);
-
-let router = new VueRouter({
-  mode: "history",
-  routes: routers,
-});
+import router from "./routes/router";
+import index from "./views/Index.vue";
 
 //取消 Vue 所有的日志与警告
 Vue.config.silent = true;
 const app = new Vue({
   el: "#app",
-  router: router,
-  store: store,
-  render: (h) => h(index),
+  router,
+  render: h => h(index)
 });
 
 window.myApp = app;
